@@ -49,12 +49,9 @@ export default function Home() {
             Welcome to my space. I am Preetham S, a second-year student at PES University.
           </Text>
         </div>
-        <h1 className={styles.glitchWord} aria-label="Portfolio, Games, 3D Models, Code">
-          <span className={styles.glitchWordItem}>PORTFOLIO</span>
-          <span className={styles.glitchWordItem}>GAMES</span>
-          <span className={styles.glitchWordItem}>3D MODELS</span>
-          <span className={styles.glitchWordItem}>CODE</span>
-        </h1>
+        <div className={styles.typewriterContainer}>
+          <h1 className={styles.typewriterText}>&gt; PORTFOLIO</h1>
+        </div>
         <div className={styles.heroCopy}>
           <Text variant="heading-default-l">
             Exploring the digital realm through game development, 3D modeling, and programming.
