@@ -11,9 +11,10 @@ import {
   Meta,
   Line,
 } from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
-import { Projects } from "@/components/work/Projects";
+import { home, about, person, social as resourcesSocial, baseURL, routes } from "@/resources";
 import { Posts } from "@/components/blog/Posts";
+import { HomeShowcase } from "@/components/home/HomeShowcase";
+import styles from "@/components/home/HomeShowcase.module.scss";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -65,7 +66,7 @@ export default function Home() {
             </RevealFx>
           )}
           <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
-            <Heading wrap="balance" variant="display-strong-l">
+            <Heading className={styles.portfolioTitle} wrap="balance" variant="display-strong-l">
               {home.headline}
             </Heading>
           </RevealFx>
@@ -97,11 +98,26 @@ export default function Home() {
               </Row>
             </Button>
           </RevealFx>
+          <Row className={styles.socialLinks} gap="8" wrap horizontal="center">
+            {["GitHub", "LinkedIn", "Email"].map((name) => {
+              const link = resourcesSocial.find((item) => item.name === name);
+              return link ? (
+                <Button
+                  key={link.name}
+                  href={link.link}
+                  prefixIcon={link.icon}
+                  size="m"
+                  variant="secondary"
+                  weight="default"
+                >
+                  {link.name}
+                </Button>
+              ) : null;
+            })}
+          </Row>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx>
+      <HomeShowcase />
       {routes["/blog"] && (
         <Column fillWidth gap="24" marginBottom="l">
           <Row fillWidth paddingRight="64">
@@ -122,7 +138,6 @@ export default function Home() {
           </Row>
         </Column>
       )}
-      <Projects range={[2]} />
     </Column>
   );
 }
