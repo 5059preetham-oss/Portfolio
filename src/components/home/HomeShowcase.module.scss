@@ -177,8 +177,10 @@
 }
 
 .topSocialLinks {
-  align-self: flex-end;
-  margin: 0 0 clamp(-2rem, -2vw, -1rem);
+  align-self: center;
+  justify-content: flex-end;
+  width: min(100%, 42rem);
+  margin: 0;
   position: relative;
   z-index: 2;
 }
@@ -374,7 +376,8 @@
 
   .topSocialLinks {
     align-self: center;
-    justify-content: center;
+    justify-content: flex-end;
+    width: 100%;
     margin: 0;
     order: 0;
   }
