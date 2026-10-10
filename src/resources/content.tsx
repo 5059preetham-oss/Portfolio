@@ -3,13 +3,13 @@ import { Row } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Preetham",
-  lastName: "",
-  name: "Preetham",
-  role: "Developer",
+  lastName: "S",
+  name: "Preetham S",
+  role: "Student",
   avatar: "",
-  email: "",
+  email: "5059preetham@gmail.com",
   location: "UTC",
-  languages: [],
+  languages: ["English"],
   locale: "en", // BCP 47 language tag for the HTML lang attribute, e.g., 'en', 'ja', 'zh-TW'
 };
 
@@ -23,6 +23,18 @@ const social: Social = [
     link: "https://github.com/5059preetham-oss",
     essential: true,
   },
+  {
+    name: "LinkedIn",
+    icon: "linkedin",
+    link: "https://www.linkedin.com/in/preetham-s-3a7947367",
+    essential: true,
+  },
+  {
+    name: "Email",
+    icon: "email",
+    link: `mailto:${person.email}`,
+    essential: true,
+  },
 ];
 
 const home: Home = {
@@ -31,19 +43,19 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building useful things for the web</>,
+  headline: <>Learning by building with code</>,
   featured: {
-    display: false,
+    display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Featured project</strong>
+        <strong className="ml-4">Personal portfolio website</strong>
       </Row>
     ),
-    href: "/work",
+    href: "/work/portfolio-website",
   },
   subline: (
     <>
-      I'm {person.firstName}, a {person.role.toLowerCase()} building and learning in public. This portfolio is a work in progress; projects and experience will be added here.
+      I'm {person.name}, a second-year student at PES University exploring game development, 3D modeling, and programming.
     </>
   ),
 };
@@ -69,24 +81,62 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        {person.firstName} is a {person.role.toLowerCase()} building and learning in public. This page will be updated with verified experience, education, and skills as the portfolio grows.
+        {person.name} is a second-year PES University student exploring game
+        development with Unity, 3D modeling with Blender, and programming in C
+        and Python. This portfolio documents learning projects and progress
+        rather than professional experience.
       </>
     ),
   },
   work: {
-    display: false, // Add verified experience here when ready
-    title: "Work Experience",
-    experiences: [],
+    display: true,
+    title: "Professional experience",
+    experiences: [
+      {
+        company: "No professional experience yet",
+        timeframe: "Current",
+        role: "Student developer",
+        achievements: [
+          <>Currently focused on coursework and self-directed learning.</>,
+          <>Building a foundation in Unity, Blender, C, and Python.</>,
+        ],
+        images: [],
+      },
+    ],
   },
   studies: {
-    display: false, // Add verified education here when ready
-    title: "Studies",
-    institutions: [],
+    display: true,
+    title: "Education",
+    institutions: [
+      {
+        name: "PES University",
+        description: <>Currently in the second year of undergraduate study.</>,
+      },
+    ],
   },
   technical: {
-    display: false, // Add verified skills here when ready
-    title: "Technical skills",
-    skills: [],
+    display: true,
+    title: "Skills and learning areas",
+    skills: [
+      {
+        title: "Game development",
+        description: <>Learning to build interactive experiences with Unity.</>,
+        tags: [{ name: "Unity" }],
+        images: [],
+      },
+      {
+        title: "3D modeling",
+        description: <>Exploring 3D modeling workflows and asset creation with Blender.</>,
+        tags: [{ name: "Blender" }],
+        images: [],
+      },
+      {
+        title: "Programming",
+        description: <>Practicing problem solving and programming with C and Python.</>,
+        tags: [{ name: "C" }, { name: "Python" }],
+        images: [],
+      },
+    ],
   },
 };
 
