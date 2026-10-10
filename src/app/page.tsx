@@ -43,6 +43,23 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
+      <Row className={styles.topSocialLinks} gap="8" wrap horizontal="end">
+        {["GitHub", "LinkedIn", "Email"].map((name) => {
+          const link = resourcesSocial.find((item) => item.name === name);
+          return link ? (
+            <Button
+              key={link.name}
+              href={link.link}
+              prefixIcon={link.icon}
+              size="m"
+              variant="secondary"
+              weight="default"
+            >
+              {link.name}
+            </Button>
+          ) : null;
+        })}
+      </Row>
       <Column className={styles.editorialHero} fillWidth horizontal="center" gap="m">
         <div className={styles.heroCopy}>
           <Text variant="heading-default-l">
@@ -82,23 +99,6 @@ export default function Home() {
             </Row>
           </Button>
         </RevealFx>
-        <Row className={styles.socialLinks} gap="8" wrap horizontal="center">
-          {["GitHub", "LinkedIn", "Email"].map((name) => {
-            const link = resourcesSocial.find((item) => item.name === name);
-            return link ? (
-              <Button
-                key={link.name}
-                href={link.link}
-                prefixIcon={link.icon}
-                size="m"
-                variant="secondary"
-                weight="default"
-              >
-                {link.name}
-              </Button>
-            ) : null;
-          })}
-        </Row>
       </Column>
       <HomeShowcase />
       {routes["/blog"] && (

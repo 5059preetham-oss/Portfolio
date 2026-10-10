@@ -33,9 +33,10 @@
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 28rem) minmax(0, 1fr);
+  grid-template-columns: minmax(12rem, 1fr) minmax(18rem, 28rem) minmax(12rem, 1fr);
   align-items: center;
-  gap: clamp(1.5rem, 4vw, 4rem);
+  gap: clamp(3rem, 8vw, 9rem);
+  width: min(100%, 78rem);
   padding: clamp(2rem, 7vw, 6rem) 0 2rem;
 }
 
@@ -97,7 +98,7 @@
 
 .heroCopy:first-child {
   justify-self: end;
-  transform: translate(-clamp(1rem, 5vw, 5rem), -clamp(1rem, 4vw, 3rem));
+  transform: translate(-clamp(2rem, 7vw, 8rem), -clamp(1rem, 4vw, 3rem));
 }
 
 .typewriterContainer {
@@ -131,11 +132,14 @@
 }
 
 .heroCopy:last-child {
-  transform: translate(clamp(1rem, 5vw, 5rem), clamp(1rem, 4vw, 3rem));
+  transform: translate(clamp(2rem, 7vw, 8rem), clamp(2rem, 6vw, 5rem));
 }
 
-.socialLinks {
-  margin-top: 1rem;
+.topSocialLinks {
+  align-self: flex-end;
+  margin: 0 0 clamp(-2rem, -2vw, -1rem);
+  position: relative;
+  z-index: 2;
 }
 
 .terminalColumn {
@@ -308,6 +312,13 @@
 
   .heroCopy:last-child {
     order: 3;
+  }
+
+  .topSocialLinks {
+    align-self: center;
+    justify-content: center;
+    margin: 0;
+    order: 0;
   }
 
   .typewriterContainer {
