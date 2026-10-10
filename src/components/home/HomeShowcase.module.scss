@@ -1,7 +1,7 @@
 .homePage {
   position: relative;
   isolation: isolate;
-  width: min(96rem, calc(100vw - 2rem));
+  width: min(84rem, calc(100% - clamp(3rem, 6vw, 6rem)));
   max-width: none !important;
   min-height: min(100svh, 64rem);
   overflow-x: hidden;
@@ -118,18 +118,6 @@
   justify-content: center;
   width: 100%;
   margin-top: 0.5rem;
-}
-
-.topSocialLinks {
-  position: relative;
-  z-index: 2;
-  align-self: stretch;
-  justify-content: flex-end;
-  width: 100%;
-  min-width: 0;
-  padding: 0;
-  box-sizing: border-box;
-  margin: 0;
 }
 
 .terminalColumn {
@@ -314,18 +302,6 @@
   .portfolioHero {
     min-height: 0;
     padding: 0;
-  }
-
-  .topSocialLinks {
-    position: relative;
-    top: auto;
-    left: auto;
-    align-self: center;
-    justify-content: flex-end;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    order: 0;
   }
 
   .homePage {

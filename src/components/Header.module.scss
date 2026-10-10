@@ -24,7 +24,20 @@
   min-height: 3rem;
 }
 
+.headerActions {
+  min-width: 0;
+}
+
+.socialLinks {
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
 @media (max-width: breakpoints.$s) {
+  .socialLinks {
+    flex-wrap: wrap;
+  }
+
   .navigation {
     min-height: 3.8rem;
     padding: 0.45rem;

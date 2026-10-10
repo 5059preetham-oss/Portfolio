@@ -1,14 +1,13 @@
 import {
   Heading,
   Text,
-  Button,
   Column,
   Row,
   Schema,
   Meta,
   Line,
 } from "@once-ui-system/core";
-import { home, about, person, social as resourcesSocial, baseURL, routes } from "@/resources";
+import { home, about, person, baseURL, routes } from "@/resources";
 import { Posts } from "@/components/blog/Posts";
 import { HomeShowcase } from "@/components/home/HomeShowcase";
 import { AmbientVideo } from "@/components/home/AmbientVideo";
@@ -42,23 +41,6 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Row className={styles.topSocialLinks} gap="8" wrap horizontal="end">
-        {["GitHub", "LinkedIn", "Email"].map((name) => {
-          const link = resourcesSocial.find((item) => item.name === name);
-          return link ? (
-            <Button
-              key={link.name}
-              href={link.link}
-              prefixIcon={link.icon}
-              size="m"
-              variant="secondary"
-              weight="default"
-            >
-              {link.name}
-            </Button>
-          ) : null;
-        })}
-      </Row>
       <PortfolioTerminalTitle />
       <section className={styles.introSections} aria-label="Introduction">
         <div className={styles.introSection}>

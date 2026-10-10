@@ -3,9 +3,9 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
+import { Button, Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery } from "@/resources";
+import { routes, display, person, about, blog, work, gallery, social } from "@/resources";
 import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
@@ -171,12 +171,30 @@ export const Header = () => {
         </Row>
         <Flex fillWidth horizontal="end" vertical="center">
           <Flex
+            className={styles.headerActions}
             paddingRight="12"
             horizontal="end"
             vertical="center"
             textVariant="body-default-s"
             gap="20"
           >
+            <Flex className={styles.socialLinks} gap="8" horizontal="end" wrap>
+              {["GitHub", "LinkedIn", "Email"].map((name) => {
+                const link = social.find((item) => item.name === name);
+                return link ? (
+                  <Button
+                    key={link.name}
+                    href={link.link}
+                    prefixIcon={link.icon}
+                    size="s"
+                    variant="secondary"
+                    weight="default"
+                  >
+                    {link.name}
+                  </Button>
+                ) : null;
+              })}
+            </Flex>
             <Flex s={{ hide: true }}>
               {display.time && <TimeDisplay timeZone={person.location} />}
             </Flex>
