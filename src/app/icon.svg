@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title>PORTFOLIO</title>
+  <rect width="512" height="512" fill="#d6d6d2"/>
+  <rect x="24" y="24" width="464" height="464" fill="#777875"/>
+  <rect x="48" y="48" width="416" height="196" fill="#303230"/>
+  <rect x="48" y="268" width="196" height="196" fill="#171817"/>
+  <rect x="268" y="268" width="196" height="196" fill="#4a4b48"/>
+  <rect x="48" y="48" width="416" height="18" fill="#ef4d32"/>
+  <rect x="48" y="66" width="138" height="18" fill="#f58b2e"/>
+  <rect x="186" y="66" width="138" height="18" fill="#f2bf37"/>
+  <rect x="324" y="66" width="140" height="18" fill="#e94c31"/>
+  <text x="72" y="156" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" letter-spacing="3">PORT</text>
+  <text x="72" y="214" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" letter-spacing="3">FOLIO</text>
+  <rect x="292" y="304" width="112" height="14" fill="#ef4d32"/>
+  <rect x="292" y="332" width="80" height="14" fill="#f58b2e"/>
+  <rect x="292" y="360" width="136" height="14" fill="#f2bf37"/>
+</svg>
