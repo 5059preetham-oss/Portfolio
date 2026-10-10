@@ -3,16 +3,87 @@
 import { useEffect, useMemo, useState } from "react";
 import styles from "./HomeShowcase.module.scss";
 
-const sourceLines = [
-  "const portfolio = {",
-  '  name: "Preetham S",',
-  '  focus: ["Unity", "Blender", "C", "Python"],',
-  '  status: "learning in public",',
-  "};",
-  "",
-  "portfolio.build();",
-  "portfolio.keepExploring();",
-];
+const sourceLines = `// Representative source view: safe visual preview, not executable code
+import { useEffect, useMemo, useState } from "react";
+import { Heading, Button, Column, Row, Text } from "@once-ui-system/core";
+import styles from "./HomeShowcase.module.scss";
+
+const person = {
+  name: "Preetham S",
+  role: "Student",
+  university: "PES University",
+  year: 2,
+  interests: ["Unity", "Blender", "C", "Python"],
+};
+
+const links = {
+  github: "github.com/5059preetham-oss",
+  linkedin: "linkedin.com/in/preetham-s-3a7947367",
+  email: "5059preetham@gmail.com",
+};
+
+export default function Home() {
+  return (
+    <Column className={styles.home} maxWidth="m">
+      <Header />
+      <main>
+        <Heading className={styles.portfolioTitle}>PORTFOLIO</Heading>
+        <Text>
+          I'm Preetham S, a second-year student at PES University
+          exploring game development, 3D modeling, and programming.
+        </Text>
+        <ContactLinks links={links} />
+        <HomeShowcase />
+      </main>
+      <Footer />
+    </Column>
+  );
+}
+
+function HomeShowcase() {
+  const [visibleLines, setVisibleLines] = useState(1);
+  const source = [
+    "const portfolio = createPortfolio(person);",
+    "portfolio.addFocus('Unity game development');",
+    "portfolio.addFocus('Blender 3D modeling');",
+    "portfolio.addFocus('Programming with C and Python');",
+    "portfolio.publish({ static: true, honest: true });",
+  ];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setVisibleLines((line) => line >= source.length ? 1 : line + 1);
+    }, 680);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <section className={styles.showcase}>
+      <Terminal lines={source.slice(0, visibleLines)} />
+      <PremiumTechStream />
+    </section>
+  );
+}
+
+function Terminal({ lines }: { lines: string[] }) {
+  return (
+    <pre className={styles.code}>
+      <code>
+        <span className={styles.prompt}>PS C:\\portfolio&gt; </span>
+        {lines.join("\\n")}
+      </code>
+    </pre>
+  );
+}
+
+function PremiumTechStream() {
+  return <aside aria-label="Premium Tech particle stream">ideas → experiments → systems</aside>;
+}
+
+// Shared layout keeps navigation, content, and project routes static.
+export const build = () => "next build";
+export const deploy = () => "github pages";
+export const keepLearning = () => ["Unity", "Blender", "C", "Python"];`.split("\n");
 
 export function HomeShowcase() {
   const [visibleLines, setVisibleLines] = useState(1);
@@ -55,7 +126,7 @@ export function HomeShowcase() {
             <span className={styles.dot} />
             <span className={styles.dot} />
             <span className={styles.dot} />
-            <span className={styles.terminalTitle}>powershell — portfolio</span>
+            <span className={styles.terminalTitle}>code 👎</span>
           </div>
           <pre className={styles.code} aria-live="polite">
             <code>
