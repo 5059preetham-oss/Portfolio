@@ -12,7 +12,6 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes } from "@/resources";
-import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 
@@ -35,7 +34,7 @@ export default function Home() {
         path={home.path}
         title={home.title}
         description={home.description}
-        image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
+        image={`${baseURL}${home.image}`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -124,7 +123,6 @@ export default function Home() {
         </Column>
       )}
       <Projects range={[2]} />
-      <Mailchimp />
     </Column>
   );
 }

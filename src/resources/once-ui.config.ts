@@ -3,8 +3,6 @@ import {
   DisplayConfig,
   EffectsConfig,
   FontsConfig,
-  MailchimpConfig,
-  ProtectedRoutesConfig,
   RoutesConfig,
   SameAsConfig,
   SchemaConfig,
@@ -14,28 +12,25 @@ import {
 import { home, person, social } from "./content";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+const baseURL: string =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://5059preetham-oss.github.io/Portfolio";
 
 const routes: RoutesConfig = {
   "/": true,
   "/about": true,
   "/work": true,
-  "/blog": true,
-  "/gallery": true,
+  "/blog": false,
+  "/gallery": false,
 };
 
 const display: DisplayConfig = {
-  location: true,
-  time: true,
+  location: false,
+  time: false,
   themeSwitcher: true,
 };
 
 // Enable password protection on selected routes
 // Set password in the .env file, refer to .env.example
-const protectedRoutes: ProtectedRoutesConfig = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
-};
-
 // Import and set font for each variant
 import { Geist } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
@@ -140,50 +135,6 @@ const effects: EffectsConfig = {
   },
 };
 
-const mailchimp: MailchimpConfig = {
-  action: "https://url/subscribe/post?parameters",
-  effects: {
-    mask: {
-      cursor: true,
-      x: 50,
-      y: 0,
-      radius: 100,
-    },
-    gradient: {
-      display: true,
-      opacity: 90,
-      x: 50,
-      y: 0,
-      width: 50,
-      height: 50,
-      tilt: 0,
-      colorStart: "accent-background-strong",
-      colorEnd: "static-transparent",
-    },
-    dots: {
-      display: true,
-      opacity: 20,
-      size: "2",
-      color: "brand-on-background-weak",
-    },
-    grid: {
-      display: false,
-      opacity: 100,
-      color: "neutral-alpha-medium",
-      width: "0.25rem",
-      height: "0.25rem",
-    },
-    lines: {
-      display: false,
-      opacity: 100,
-      color: "neutral-alpha-medium",
-      size: "16",
-      thickness: 1,
-      angle: 90,
-    },
-  },
-};
-
 // default schema data — pulls from content.tsx so there's one source of truth
 const schema: SchemaConfig = {
   logo: "",
@@ -218,9 +169,7 @@ const socialSharing: SocialSharingConfig = {
 
 export {
   display,
-  mailchimp,
   routes,
-  protectedRoutes,
   baseURL,
   fonts,
   style,
