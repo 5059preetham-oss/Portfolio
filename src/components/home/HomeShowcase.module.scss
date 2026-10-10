@@ -3,6 +3,7 @@
   isolation: isolate;
   min-height: min(100svh, 64rem);
   overflow-x: hidden;
+  padding-bottom: 1rem;
 }
 
 .ambientBackground {
@@ -29,19 +30,16 @@
     linear-gradient(90deg, rgba(3, 8, 20, 0.68), rgba(3, 8, 20, 0.2) 55%, rgba(3, 8, 20, 0.58));
 }
 
-.editorialHero {
+.portfolioHero {
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: minmax(12rem, 1fr) minmax(18rem, 28rem) minmax(12rem, 1fr);
-  align-items: center;
-  gap: clamp(3rem, 8vw, 9rem);
-  width: min(100%, 78rem);
-  padding: clamp(2rem, 7vw, 6rem) 0 2rem;
+  min-height: clamp(7rem, 16svh, 10rem);
+  place-items: center;
+  padding: 1rem 0 0.5rem;
 }
 
-.editorialHero::before,
-.editorialHero::after {
+.portfolioHero::before {
   position: absolute;
   z-index: -1;
   content: "";
@@ -49,90 +47,64 @@
   border-radius: 50%;
   filter: blur(18px);
   opacity: 0.7;
+  width: min(30rem, 90%);
+  height: 4rem;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.3), transparent 70%);
 }
 
-.editorialHero::before {
-  width: 90%;
-  height: 32%;
-  top: 16%;
-  left: -20%;
-  background: linear-gradient(105deg, transparent 5%, rgba(14, 116, 144, 0.26) 32%, rgba(30, 64, 175, 0.2) 65%, transparent 92%);
-  transform: rotate(-12deg);
-  animation: ribbonFlow 13s ease-in-out infinite alternate;
+.portfolioTerminalTitle {
+  display: flex;
+  align-items: center;
+  min-height: 3.5rem;
+  color: #fff;
+  font-family: var(--font-code), ui-monospace, monospace;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
-.editorialHero::after {
-  width: 85%;
-  height: 28%;
-  top: 34%;
-  right: -18%;
-  background: linear-gradient(105deg, transparent 5%, rgba(37, 99, 235, 0.2) 35%, rgba(8, 47, 73, 0.3) 68%, transparent 92%);
-  transform: rotate(13deg);
-  animation: ribbonFlowReverse 16s ease-in-out infinite alternate;
+.portfolioTerminalTitle h1 {
+  margin: 0;
+}
+
+.titleCursor {
+  animation: blinkCaret 0.75s step-end infinite;
+}
+
+.staticTitle .titleCursor {
+  animation: none;
+}
+
+.introSections {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) minmax(12rem, 1fr);
+  gap: clamp(4rem, 13vw, 12rem);
+  width: min(100%, 78rem);
+  min-height: clamp(10rem, 20svh, 15rem);
+  align-items: center;
+  padding: 0 0 1rem;
+}
+
+.introSection {
+  max-width: 19rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(1rem, 1.3vw, 1.18rem);
+  line-height: 1.7;
+  text-wrap: balance;
+  animation: introReveal 800ms ease both;
+}
+
+.introSectionRight {
+  justify-self: end;
+  transform: translateY(1.5rem);
+  animation-delay: 180ms;
 }
 
 .showcase {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: clamp(2rem, 5vw, 4rem);
-}
-
-.portfolioTitle {
-  font-size: clamp(4rem, 17vw, 10rem);
-  line-height: 0.82;
-  letter-spacing: -0.08em;
-  text-shadow: 0 0 28px rgba(103, 232, 249, 0.32), 0 0 90px rgba(168, 85, 247, 0.22);
-  animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-.heroCopy {
-  position: relative;
-  z-index: 1;
-  max-width: 18rem;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: clamp(1rem, 1.3vw, 1.18rem);
-  line-height: 1.75;
-  text-wrap: balance;
-}
-
-.heroCopy:first-child {
-  justify-self: end;
-  transform: translate(-clamp(2rem, 7vw, 8rem), -clamp(1rem, 4vw, 3rem));
-}
-
-.typewriterContainer {
-  display: grid;
-  min-height: 18rem;
-  place-items: center;
-  width: min(25rem, 100%);
-}
-
-.typewriterText {
-  width: 0;
-  margin: 0 auto;
-  overflow: hidden;
-  color: #fff;
-  font-family: var(--font-code), ui-monospace, SFMono-Regular, monospace;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  line-height: 1;
-  border-right: 0.15em solid #fff;
-  white-space: nowrap;
-  text-align: center;
-  animation:
-    typing 2.5s steps(11, end),
-    blinkCaret 0.75s step-end infinite;
-}
-
-.heroDetails {
-  position: relative;
-  z-index: 1;
-}
-
-.heroCopy:last-child {
-  transform: translate(clamp(2rem, 7vw, 8rem), clamp(2rem, 6vw, 5rem));
+  margin-top: 0.5rem;
 }
 
 .topSocialLinks {
@@ -286,32 +258,22 @@
 }
 
 @media (max-width: 700px) {
-  .editorialHero {
+  .introSections {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-    padding-top: 2rem;
+    gap: 1rem;
+    min-height: auto;
     text-align: center;
   }
 
-  .heroCopy,
-  .heroCopy:first-child {
+  .introSection,
+  .introSectionRight {
     justify-self: center;
     max-width: 28rem;
     transform: none;
   }
 
-  .heroCopy:first-child {
-    order: 1;
-  }
-
-  .heroBox {
-    order: 2;
-    width: 100%;
-    min-height: 14rem;
-  }
-
-  .heroCopy:last-child {
-    order: 3;
+  .portfolioHero {
+    min-height: 8rem;
   }
 
   .topSocialLinks {
@@ -321,29 +283,20 @@
     order: 0;
   }
 
-  .typewriterContainer {
-    width: min(22rem, 88vw);
-    min-height: 14rem;
-  }
-
-  .typewriterText {
-    font-size: clamp(1.4rem, 8vw, 2.5rem);
-  }
-
   .homePage {
     min-height: 100svh;
   }
 
   .showcase {
-    margin-top: 1.5rem;
+    margin-top: 0.5rem;
   }
 
   .terminal {
-    height: 360px;
+    height: 310px;
   }
 
   .codeViewport {
-    height: calc(360px - 3.85rem);
+    height: calc(310px - 3.85rem);
     padding: 1rem;
   }
 
@@ -357,20 +310,19 @@
 @media (prefers-reduced-motion: reduce) {
   .codeLine,
   .cursor,
-  .editorialHero::before,
-  .editorialHero::after {
-    animation: none;
-  }
-
-  .typewriterText {
-    width: auto;
-    border-right-color: transparent;
+  .portfolioHero::before,
+  .introSection {
     animation: none;
   }
 
   .codeViewport {
     overflow: auto;
     scroll-behavior: auto;
+  }
+
+  @keyframes introReveal {
+    from { opacity: 0; transform: translateY(0.75rem); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes typing {
