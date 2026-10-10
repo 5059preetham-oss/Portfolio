@@ -108,40 +108,40 @@
   width: min(25rem, 100%);
 }
 
-.heroBox::before {
-  position: absolute;
-  width: 80%;
-  height: 65%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(103, 232, 249, 0.5), rgba(30, 64, 175, 0.22) 42%, transparent 72%);
-  content: "";
-  filter: blur(24px);
-}
-
-.heroCube {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 12rem;
-  overflow: visible;
-  --swiper-theme-color: #fff;
-}
-
-.heroSlide {
+.glitchWord {
   display: grid;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.13), transparent 42%),
-    rgba(15, 23, 42, 0.48);
-  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.08), 0 0 24px rgba(255, 255, 255, 0.08);
+  grid-template: 1fr / 1fr;
+  align-items: center;
+  justify-items: center;
+  min-width: min(100%, 16rem);
+  min-height: 5rem;
+  margin: 0;
   color: #fff;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  font-size: clamp(1.5rem, 3.8vw, 2.65rem);
+  font-family: var(--font-code), ui-monospace, SFMono-Regular, monospace;
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: 0.12em;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.22);
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.24);
+}
+
+.glitchWordItem {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  animation: glitchWordCycle 12s steps(1, end) infinite;
+}
+
+.glitchWordItem:nth-child(2) {
+  animation-delay: -9s;
+}
+
+.glitchWordItem:nth-child(3) {
+  animation-delay: -6s;
+}
+
+.glitchWordItem:nth-child(4) {
+  animation-delay: -3s;
 }
 
 .heroDetails {
@@ -329,9 +329,10 @@
     order: 3;
   }
 
-  .heroCube {
+  .glitchWord {
     width: min(22rem, 88vw);
-    height: 10rem;
+    min-width: 0;
+    font-size: clamp(1.6rem, 9vw, 2.5rem);
   }
 
   .homePage {
@@ -361,15 +362,46 @@
 @media (prefers-reduced-motion: reduce) {
   .codeLine,
   .cursor,
-  .portfolioTitle,
+  .glitchWordItem,
   .editorialHero::before,
   .editorialHero::after {
     animation: none;
   }
 
+  .glitchWordItem:not(:first-child) {
+    display: none;
+  }
+
   .codeViewport {
     overflow: auto;
     scroll-behavior: auto;
+  }
+
+  @keyframes glitchWordCycle {
+    0%, 20% {
+      opacity: 1;
+      clip-path: inset(0);
+      transform: translate(0);
+      text-shadow: none;
+    }
+    21% {
+      opacity: 0;
+      clip-path: inset(0 0 48% 0);
+      transform: translate(-3px, 1px);
+      text-shadow: 2px 0 #ff1744, -2px 0 #00e5ff;
+    }
+    24%, 25% {
+      opacity: 1;
+      clip-path: inset(12% 0 35% 0);
+      transform: translate(4px, -1px);
+      text-shadow: 3px 0 #ff1744, -3px 0 #00e5ff;
+    }
+    27%, 100% {
+      opacity: 0;
+      clip-path: inset(0);
+      transform: translate(0);
+      text-shadow: none;
+    }
   }
 
   .ambientVideo {
