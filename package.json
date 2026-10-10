@@ -21,6 +21,7 @@
     "react-dom": "^19.2.3",
     "react-icons": "^5.5.0",
     "sass": "^1.86.3",
+    "swiper": "^11.2.10",
     "transliteration": "^2.3.5"
   },
   "devDependencies": {
