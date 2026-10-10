@@ -75,22 +75,10 @@ export function PortfolioTerminalTitle() {
   return (
     <section className={styles.portfolioHero} aria-label="Portfolio title">
       <div className={`${styles.portfolioTerminalTitle} ${reducedMotion ? styles.staticTitle : ""}`}>
-        <div className={styles.titleBar} aria-hidden="true">
-          <span className={`${styles.titleDot} ${styles.titleDotRed}`} />
-          <span className={`${styles.titleDot} ${styles.titleDotYellow}`} />
-          <span className={`${styles.titleDot} ${styles.titleDotGreen}`} />
-          <span className={styles.titlePath}>preetham@portfolio:~</span>
-          <span className={styles.titleStatus}>● online</span>
-        </div>
         <div className={styles.titleBody}>
           <span className={styles.titlePrompt} aria-hidden="true">&gt;</span>
           <h1 aria-live="polite">{text}</h1>
           <span className={styles.titleCursor} aria-hidden="true" />
-        </div>
-        <div className={styles.titleFooter} aria-hidden="true">
-          <span>SESSION: LOCAL</span>
-          <span>UTF-8</span>
-          <span>READY</span>
         </div>
       </div>
     </section>

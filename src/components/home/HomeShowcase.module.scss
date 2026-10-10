@@ -41,77 +41,18 @@
   width: 100%;
 }
 
-.portfolioHero::before {
-  position: absolute;
-  z-index: -1;
-  content: "";
-  pointer-events: none;
-  border-radius: 50%;
-  filter: blur(18px);
-  opacity: 0.7;
-  width: min(30rem, 90%);
-  height: 4rem;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.3), transparent 70%);
-}
-
 .portfolioTerminalTitle {
   width: min(100%, 28rem);
-  overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  border-radius: 0.65rem;
-  background: rgba(3, 8, 15, 0.88);
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.25), 0 0 2.5rem rgba(34, 211, 238, 0.08);
   color: #fff;
   font-family: var(--font-code), ui-monospace, monospace;
   animation: terminalEntrance 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.titleBar,
-.titleFooter {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  min-height: 1.7rem;
-  padding: 0 0.8rem;
-  color: rgba(203, 213, 225, 0.62);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-}
-
-.titleBar {
-  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-}
-
-.titleFooter {
-  justify-content: space-between;
-  border-top: 1px solid rgba(148, 163, 184, 0.14);
-  color: rgba(148, 163, 184, 0.5);
-}
-
-.titleDot {
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-}
-
-.titleDotRed { background: #fb7185; }
-.titleDotYellow { background: #facc15; }
-.titleDotGreen { background: #4ade80; }
-
-.titlePath {
-  margin-left: 0.35rem;
-}
-
-.titleStatus {
-  margin-left: auto;
-  color: rgba(134, 239, 172, 0.75);
 }
 
 .titleBody {
   display: flex;
   align-items: center;
   min-height: clamp(3.8rem, 7vw, 5rem);
-  padding: 0.55rem clamp(1rem, 3vw, 1.75rem);
+  padding: 0.55rem 0;
   gap: 0.75rem;
 }
 
@@ -371,17 +312,6 @@
     padding: 0;
   }
 
-  .titleBar,
-  .titleFooter {
-    font-size: 0.55rem;
-  }
-
-  .titlePath {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
   .topSocialLinks {
     align-self: center;
     justify-content: flex-end;
@@ -417,7 +347,6 @@
 @media (prefers-reduced-motion: reduce) {
   .codeLine,
   .cursor,
-  .portfolioHero::before,
   .introSection,
   .portfolioTerminalTitle {
     animation: none;
