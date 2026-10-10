@@ -55,7 +55,7 @@
 }
 
 .portfolioTerminalTitle {
-  width: min(100%, 68rem);
+  width: min(100%, 34rem);
   overflow: hidden;
   border: 1px solid rgba(148, 163, 184, 0.3);
   border-radius: 0.65rem;
@@ -181,7 +181,7 @@
 .topSocialLinks {
   align-self: center;
   justify-content: flex-end;
-  width: 100%;
+  width: min(100%, 34rem);
   margin: 0;
   position: relative;
   z-index: 2;
@@ -356,7 +356,7 @@
   }
 
   .portfolioTerminalTitle {
-    width: 100%;
+    width: calc(100% - 1rem);
   }
 
   .introSection,
@@ -385,7 +385,7 @@
   .topSocialLinks {
     align-self: center;
     justify-content: flex-end;
-    width: 100%;
+    width: calc(100% - 1rem);
     margin: 0;
     order: 0;
   }
