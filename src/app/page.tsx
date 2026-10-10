@@ -2,8 +2,6 @@ import {
   Heading,
   Text,
   Button,
-  Avatar,
-  RevealFx,
   Column,
   Row,
   Schema,
@@ -14,6 +12,7 @@ import { home, about, person, social as resourcesSocial, baseURL, routes } from 
 import { Posts } from "@/components/blog/Posts";
 import { HomeShowcase } from "@/components/home/HomeShowcase";
 import { AmbientVideo } from "@/components/home/AmbientVideo";
+import { PortfolioTerminalTitle } from "@/components/home/PortfolioTerminalTitle";
 import styles from "@/components/home/HomeShowcase.module.scss";
 
 export async function generateMetadata() {
@@ -60,46 +59,19 @@ export default function Home() {
           ) : null;
         })}
       </Row>
-      <Column className={styles.editorialHero} fillWidth horizontal="center" gap="m">
-        <div className={styles.heroCopy}>
+      <PortfolioTerminalTitle />
+      <section className={styles.introSections} aria-label="Introduction">
+        <div className={styles.introSection}>
           <Text variant="heading-default-l">
             Welcome to my space. I am Preetham S, a second-year student at PES University.
           </Text>
         </div>
-        <div className={styles.typewriterContainer}>
-          <h1 className={styles.typewriterText}>&gt; PORTFOLIO</h1>
-        </div>
-        <div className={styles.heroCopy}>
+        <div className={`${styles.introSection} ${styles.introSectionRight}`}>
           <Text variant="heading-default-l">
             Exploring the digital realm through game development, 3D modeling, and programming.
           </Text>
         </div>
-      </Column>
-      <Column className={styles.heroDetails} fillWidth horizontal="center" gap="m">
-        <RevealFx paddingTop="12" horizontal="center" paddingLeft="12">
-          <Button
-            id="about"
-            data-border="rounded"
-            href={about.path}
-            variant="secondary"
-            size="m"
-            weight="default"
-            arrowIcon
-          >
-            <Row gap="8" vertical="center" paddingRight="4">
-              {about.avatar.display && (
-                <Avatar
-                  marginRight="8"
-                  style={{ marginLeft: "-0.75rem" }}
-                  src={person.avatar}
-                  size="m"
-                />
-              )}
-              {about.title}
-            </Row>
-          </Button>
-        </RevealFx>
-      </Column>
+      </section>
       <HomeShowcase />
       {routes["/blog"] && (
         <Column fillWidth gap="24" marginBottom="l">
