@@ -51,6 +51,7 @@ export function HomeShowcase() {
   const [reducedMotion, setReducedMotion] = useState(false);
   const lines = useMemo(() => sourceLines.split("\n"), []);
   const activeLineRef = useRef<HTMLSpanElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -66,7 +67,12 @@ export function HomeShowcase() {
 
   useEffect(() => {
     if (!reducedMotion) {
-      activeLineRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+      const viewport = viewportRef.current;
+      const activeLine = activeLineRef.current;
+      if (viewport && activeLine) {
+        const targetTop = activeLine.offsetTop - viewport.clientHeight / 2 + activeLine.offsetHeight / 2;
+        viewport.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+      }
     }
   }, [activeLine, reducedMotion]);
 
@@ -90,7 +96,7 @@ export function HomeShowcase() {
             <span className={styles.dot} />
             <span className={styles.terminalTitle}>code 👎</span>
           </div>
-          <div className={styles.codeViewport} aria-live="polite">
+          <div ref={viewportRef} className={styles.codeViewport} aria-live="polite">
             <pre className={styles.code}>
               <code>
                 <span className={styles.prompt}>PS C:\portfolio&gt; </span>
