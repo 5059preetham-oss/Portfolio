@@ -27,7 +27,7 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <Column className={styles.homePage} maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <Column className={styles.homePage} maxWidth="l" gap="xl" paddingY="12" horizontal="center">
       <AmbientVideo />
       <Schema
         as="webPage"
