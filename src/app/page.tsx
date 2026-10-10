@@ -14,6 +14,7 @@ import {
 import { home, about, person, social as resourcesSocial, baseURL, routes } from "@/resources";
 import { Posts } from "@/components/blog/Posts";
 import { HomeShowcase } from "@/components/home/HomeShowcase";
+import { AmbientVideo } from "@/components/home/AmbientVideo";
 import styles from "@/components/home/HomeShowcase.module.scss";
 
 export async function generateMetadata() {
@@ -28,7 +29,8 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <Column className={styles.homePage} maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+      <AmbientVideo />
       <Schema
         as="webPage"
         baseURL={baseURL}

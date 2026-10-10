@@ -1,3 +1,34 @@
+.homePage {
+  position: relative;
+  isolation: isolate;
+  min-height: min(100svh, 64rem);
+  overflow-x: hidden;
+}
+
+.ambientBackground {
+  position: fixed;
+  z-index: -2;
+  inset: 0;
+  overflow: hidden;
+  background: #07111e url("/images/og/home.jpg") center / cover no-repeat;
+  pointer-events: none;
+}
+
+.ambientVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.62;
+}
+
+.ambientOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(3, 8, 20, 0.5), rgba(3, 8, 20, 0.72)),
+    linear-gradient(90deg, rgba(3, 8, 20, 0.68), rgba(3, 8, 20, 0.2) 55%, rgba(3, 8, 20, 0.58));
+}
+
 .editorialHero {
   position: relative;
   isolation: isolate;
@@ -102,8 +133,10 @@
 
 .codeViewport {
   height: calc(400px - 3.85rem);
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: hidden;
   scroll-behavior: smooth;
+  overscroll-behavior: contain;
 }
 
 .code {
@@ -196,6 +229,10 @@
 }
 
 @media (max-width: 700px) {
+  .homePage {
+    min-height: 100svh;
+  }
+
   .showcase {
     margin-top: 1.5rem;
   }
@@ -228,5 +265,9 @@
   .codeViewport {
     overflow: auto;
     scroll-behavior: auto;
+  }
+
+  .ambientVideo {
+    display: none;
   }
 }
