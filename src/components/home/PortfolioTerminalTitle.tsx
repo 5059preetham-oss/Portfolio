@@ -3,11 +3,10 @@
 import { useEffect, useState } from "react";
 import styles from "./HomeShowcase.module.scss";
 
-const intro = "HELLO, Welcome";
 const destination = "PORTFOLIO";
 
 export function PortfolioTerminalTitle() {
-  const [text, setText] = useState(intro);
+  const [text, setText] = useState("");
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -27,13 +26,13 @@ export function PortfolioTerminalTitle() {
       }, delay);
     };
 
-    const typeText = (value: string, onComplete: () => void) => {
+    const typeText = (onComplete: () => void) => {
       let index = 0;
       const step = () => {
         if (cancelled) return;
         index += 1;
-        setText(value.slice(0, index));
-        if (index < value.length) {
+        setText(destination.slice(0, index));
+        if (index < destination.length) {
           schedule(step, 185);
         } else {
           schedule(onComplete, 5200);
@@ -42,12 +41,12 @@ export function PortfolioTerminalTitle() {
       schedule(step, 185);
     };
 
-    const eraseText = (value: string, onComplete: () => void) => {
-      let index = value.length;
+    const eraseText = (onComplete: () => void) => {
+      let index = destination.length;
       const step = () => {
         if (cancelled) return;
         index -= 1;
-        setText(value.slice(0, index));
+        setText(destination.slice(0, index));
         if (index > 0) {
           schedule(step, 170);
         } else {
@@ -57,15 +56,15 @@ export function PortfolioTerminalTitle() {
       schedule(step, 170);
     };
 
-    const cycleToDestination = () => {
-      eraseText(intro, () => typeText(destination, cycleToIntro));
+    const cycleToType = () => {
+      typeText(cycleToErase);
     };
-    const cycleToIntro = () => {
-      eraseText(destination, () => typeText(intro, cycleToDestination));
+    const cycleToErase = () => {
+      eraseText(cycleToType);
     };
 
     // Let the terminal chrome establish itself before the first deliberate edit.
-    schedule(cycleToDestination, 3200);
+    schedule(cycleToType, 3200);
 
     return () => {
       cancelled = true;
