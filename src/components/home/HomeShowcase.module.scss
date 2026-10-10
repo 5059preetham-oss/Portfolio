@@ -1,0 +1,231 @@
+.showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.65fr);
+  gap: 1rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.portfolioTitle {
+  font-size: clamp(4rem, 17vw, 10rem);
+  line-height: 0.82;
+  letter-spacing: -0.08em;
+  text-shadow: 0 0 28px rgba(103, 232, 249, 0.32), 0 0 90px rgba(168, 85, 247, 0.22);
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.socialLinks {
+  margin-top: 1rem;
+}
+
+.terminalColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.terminal {
+  overflow: hidden;
+  width: 100%;
+  min-height: 300px;
+  border: 1px solid rgba(125, 211, 252, 0.28);
+  border-radius: 1rem;
+  background: #080b11;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28), 0 0 50px rgba(34, 211, 238, 0.08);
+  color: #d7f9ff;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(125, 211, 252, 0.16);
+  color: #8ca8b2;
+  font: 0.72rem/1.2 var(--font-code), monospace;
+}
+
+.terminalTitle {
+  margin-left: 0.45rem;
+}
+
+.dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #fb7185;
+}
+
+.dot:nth-child(2) {
+  background: #facc15;
+}
+
+.dot:nth-child(3) {
+  background: #4ade80;
+}
+
+.code {
+  margin: 0;
+  padding: 1.4rem;
+  min-height: 245px;
+  color: #b7f7de;
+  font: 0.9rem/1.8 var(--font-code), monospace;
+  white-space: pre-wrap;
+}
+
+.prompt {
+  color: #67e8f9;
+}
+
+.codeLine {
+  display: block;
+  animation: lineIn 0.45s ease both;
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.55rem;
+  height: 1.05rem;
+  margin-left: 0.25rem;
+  vertical-align: -0.15rem;
+  background: #67e8f9;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+.copyButton {
+  margin-top: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--neutral-border-medium);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--neutral-on-background-strong);
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.copyButton:hover,
+.copyButton:focus-visible {
+  border-color: var(--brand-border-strong);
+  background: var(--brand-alpha-weak);
+  color: var(--brand-on-background-strong);
+}
+
+.particlePanel {
+  position: relative;
+  min-height: 300px;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(167, 139, 250, 0.24);
+  background:
+    radial-gradient(circle at 55% 12%, rgba(168, 85, 247, 0.3), transparent 30%),
+    linear-gradient(160deg, #111827, #090b13 62%, #160d29);
+  box-shadow: inset 0 0 60px rgba(168, 85, 247, 0.08);
+}
+
+.particleLabel,
+.streamCaption {
+  position: absolute;
+  z-index: 1;
+  left: 1.1rem;
+  color: rgba(237, 233, 254, 0.85);
+  font: 0.7rem/1.2 var(--font-code), monospace;
+  letter-spacing: 0.16em;
+}
+
+.particleLabel {
+  top: 1rem;
+}
+
+.streamCaption {
+  bottom: 1rem;
+  color: rgba(196, 181, 253, 0.6);
+  letter-spacing: 0.04em;
+}
+
+.particleStream {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0 48%, rgba(192, 132, 252, 0.12) 50%, transparent 52%);
+}
+
+.particle {
+  position: absolute;
+  top: -10%;
+  border-radius: 50%;
+  background: #c4b5fd;
+  box-shadow: 0 0 12px 3px rgba(192, 132, 252, 0.7);
+  animation: streamDown linear infinite;
+}
+
+@keyframes streamDown {
+  from {
+    transform: translate3d(0, -20px, 0) scale(0.7);
+    opacity: 0;
+  }
+  12%,
+  80% {
+    opacity: 0.9;
+  }
+  to {
+    transform: translate3d(18px, 390px, 0) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes lineIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+
+  @keyframes titleGlow {
+    from {
+      filter: brightness(0.9);
+      transform: scale(0.98);
+    }
+    to {
+      filter: brightness(1.2);
+      transform: scale(1);
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .particlePanel {
+    min-height: 180px;
+  }
+
+  .code {
+    min-height: 220px;
+    padding: 1rem;
+    font-size: 0.76rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .codeLine,
+  .cursor,
+  .portfolioTitle {
+    animation: none;
+  }
+
+  .particle {
+    opacity: 0.35;
+  }
+}

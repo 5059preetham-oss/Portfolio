@@ -77,6 +77,7 @@ export const Header = () => {
         </Row>
         <Row fillWidth horizontal="center">
           <Row
+            className={styles.navigation}
             background="page"
             border="neutral-alpha-weak"
             radius="m-4"
