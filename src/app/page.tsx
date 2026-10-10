@@ -49,13 +49,15 @@ export default function Home() {
             Welcome to my space. I am Preetham S, a second-year student at PES University.
           </Text>
         </div>
-        <div className={styles.heroBox} role="img" aria-label="Rotating portfolio box labeled Portfolio, Code, Student, and Dev">
+        <div className={styles.heroBox} role="img" aria-label="Rotating portfolio box labeled Portfolio, Code, and Dev">
           <div className={styles.boxScene}>
             <div className={styles.box}>
               <div className={`${styles.boxFace} ${styles.boxFront}`}>PORTFOLIO</div>
-              <div className={`${styles.boxFace} ${styles.boxRight}`}>CODE</div>
-              <div className={`${styles.boxFace} ${styles.boxBack}`}>STUDENT</div>
-              <div className={`${styles.boxFace} ${styles.boxLeft}`}>DEV</div>
+              <div className={`${styles.boxFace} ${styles.boxTop}`}>CODE</div>
+              <div className={`${styles.boxFace} ${styles.boxBack}`}>DEV</div>
+              <div className={`${styles.boxFace} ${styles.boxBottom}`} aria-hidden="true" />
+              <div className={`${styles.boxFace} ${styles.boxSide} ${styles.boxSideLeft}`} aria-hidden="true" />
+              <div className={`${styles.boxFace} ${styles.boxSide} ${styles.boxSideRight}`} aria-hidden="true" />
             </div>
           </div>
         </div>
