@@ -1,7 +1,8 @@
 .homePage {
   position: relative;
   isolation: isolate;
-  width: 100%;
+  width: min(96rem, calc(100vw - 2rem));
+  max-width: none !important;
   min-height: min(100svh, 64rem);
   overflow-x: hidden;
   padding-bottom: 1rem;
@@ -120,15 +121,13 @@
 }
 
 .topSocialLinks {
-  position: absolute;
-  top: 0.25rem;
-  left: 50%;
+  position: relative;
   z-index: 2;
-  align-self: auto;
-  transform: translateX(-50%);
+  align-self: stretch;
   justify-content: flex-end;
-  width: 100vw;
-  padding: 0 clamp(1rem, 3vw, 3rem);
+  width: 100%;
+  min-width: 0;
+  padding: 0;
   box-sizing: border-box;
   margin: 0;
 }
@@ -322,9 +321,8 @@
     top: auto;
     left: auto;
     align-self: center;
-    transform: none;
     justify-content: flex-end;
-    width: calc(100% - 1rem);
+    width: 100%;
     padding: 0;
     margin: 0;
     order: 0;
