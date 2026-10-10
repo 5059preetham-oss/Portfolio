@@ -1,7 +1,19 @@
 @use "./breakpoints.scss" as breakpoints;
 
+.footer {
+    width: 100%;
+    padding-inline: clamp(1rem, 3vw, 3rem);
+    box-sizing: border-box;
+}
+
+.footerContent {
+    width: 100%;
+    min-width: 0;
+    padding-block: 0.5rem;
+}
+
 @media (max-width: breakpoints.$s) {
-    .mobile {
+    .footerContent {
         text-align: center;
     }
 }
