@@ -120,12 +120,17 @@
 }
 
 .topSocialLinks {
-  align-self: center;
-  justify-content: flex-end;
-  width: min(100%, 28rem);
-  margin: 0;
-  position: relative;
+  position: absolute;
+  top: 0.25rem;
+  left: 50%;
   z-index: 2;
+  align-self: auto;
+  transform: translateX(-50%);
+  justify-content: flex-end;
+  width: 100vw;
+  padding: 0 clamp(1rem, 3vw, 3rem);
+  box-sizing: border-box;
+  margin: 0;
 }
 
 .terminalColumn {
@@ -313,9 +318,14 @@
   }
 
   .topSocialLinks {
+    position: relative;
+    top: auto;
+    left: auto;
     align-self: center;
+    transform: none;
     justify-content: flex-end;
     width: calc(100% - 1rem);
+    padding: 0;
     margin: 0;
     order: 0;
   }
