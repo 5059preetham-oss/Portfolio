@@ -5,7 +5,6 @@ import {
   Avatar,
   RevealFx,
   Column,
-  Badge,
   Row,
   Schema,
   Meta,
@@ -45,58 +44,68 @@ export default function Home() {
         }}
       />
       <Column className={styles.editorialHero} fillWidth horizontal="center" gap="m">
-        <Column maxWidth="s" horizontal="center" align="center">
-          <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
-            <Heading className={styles.portfolioTitle} wrap="balance" variant="display-strong-l">
-              {home.headline}
-            </Heading>
-          </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="32">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {home.subline}
-            </Text>
-          </RevealFx>
-          <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
-            <Button
-              id="about"
-              data-border="rounded"
-              href={about.path}
-              variant="secondary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Row gap="8" vertical="center" paddingRight="4">
-                {about.avatar.display && (
-                  <Avatar
-                    marginRight="8"
-                    style={{ marginLeft: "-0.75rem" }}
-                    src={person.avatar}
-                    size="m"
-                  />
-                )}
-                {about.title}
-              </Row>
-            </Button>
-          </RevealFx>
-          <Row className={styles.socialLinks} gap="8" wrap horizontal="center">
-            {["GitHub", "LinkedIn", "Email"].map((name) => {
-              const link = resourcesSocial.find((item) => item.name === name);
-              return link ? (
-                <Button
-                  key={link.name}
-                  href={link.link}
-                  prefixIcon={link.icon}
+        <div className={styles.heroCopy}>
+          <Text variant="heading-default-l">
+            Welcome to my space. I am Preetham S, a second-year student at PES University.
+          </Text>
+        </div>
+        <div className={styles.heroBox} role="img" aria-label="Rotating portfolio box labeled Portfolio, Code, Student, and Dev">
+          <div className={styles.boxScene}>
+            <div className={styles.box}>
+              <div className={`${styles.boxFace} ${styles.boxFront}`}>PORTFOLIO</div>
+              <div className={`${styles.boxFace} ${styles.boxRight}`}>CODE</div>
+              <div className={`${styles.boxFace} ${styles.boxBack}`}>STUDENT</div>
+              <div className={`${styles.boxFace} ${styles.boxLeft}`}>DEV</div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.heroCopy}>
+          <Text variant="heading-default-l">
+            Exploring the digital realm through game development, 3D modeling, and programming.
+          </Text>
+        </div>
+      </Column>
+      <Column className={styles.heroDetails} fillWidth horizontal="center" gap="m">
+        <RevealFx paddingTop="12" horizontal="center" paddingLeft="12">
+          <Button
+            id="about"
+            data-border="rounded"
+            href={about.path}
+            variant="secondary"
+            size="m"
+            weight="default"
+            arrowIcon
+          >
+            <Row gap="8" vertical="center" paddingRight="4">
+              {about.avatar.display && (
+                <Avatar
+                  marginRight="8"
+                  style={{ marginLeft: "-0.75rem" }}
+                  src={person.avatar}
                   size="m"
-                  variant="secondary"
-                  weight="default"
-                >
-                  {link.name}
-                </Button>
-              ) : null;
-            })}
-          </Row>
-        </Column>
+                />
+              )}
+              {about.title}
+            </Row>
+          </Button>
+        </RevealFx>
+        <Row className={styles.socialLinks} gap="8" wrap horizontal="center">
+          {["GitHub", "LinkedIn", "Email"].map((name) => {
+            const link = resourcesSocial.find((item) => item.name === name);
+            return link ? (
+              <Button
+                key={link.name}
+                href={link.link}
+                prefixIcon={link.icon}
+                size="m"
+                variant="secondary"
+                weight="default"
+              >
+                {link.name}
+              </Button>
+            ) : null;
+          })}
+        </Row>
       </Column>
       <HomeShowcase />
       {routes["/blog"] && (
