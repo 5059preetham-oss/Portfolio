@@ -1,6 +1,8 @@
 .showcase {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.65fr);
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.75fr);
+  grid-template-rows: 420px;
+  align-items: stretch;
   gap: 1rem;
   width: 100%;
   margin-top: 2rem;
@@ -27,7 +29,7 @@
 .terminal {
   overflow: hidden;
   width: 100%;
-  min-height: 300px;
+  height: 420px;
   border: 1px solid rgba(125, 211, 252, 0.28);
   border-radius: 1rem;
   background: #080b11;
@@ -67,9 +69,10 @@
 .code {
   margin: 0;
   padding: 1.4rem;
-  min-height: 245px;
+  height: calc(420px - 3.85rem);
+  overflow: hidden;
   color: #b7f7de;
-  font: 0.9rem/1.8 var(--font-code), monospace;
+  font: 1rem/1.85 var(--font-code), monospace;
   white-space: pre-wrap;
 }
 
@@ -113,7 +116,7 @@
 
 .particlePanel {
   position: relative;
-  min-height: 300px;
+  height: 420px;
   overflow: hidden;
   border-radius: 1rem;
   border: 1px solid rgba(167, 139, 250, 0.24);
@@ -188,32 +191,39 @@
   50% {
     opacity: 0;
   }
+}
 
-  @keyframes titleGlow {
-    from {
-      filter: brightness(0.9);
-      transform: scale(0.98);
-    }
-    to {
-      filter: brightness(1.2);
-      transform: scale(1);
-    }
+@keyframes titleGlow {
+  from {
+    filter: brightness(0.9);
+    transform: scale(0.98);
+  }
+  to {
+    filter: brightness(1.2);
+    transform: scale(1);
   }
 }
 
 @media (max-width: 700px) {
   .showcase {
     grid-template-columns: 1fr;
+    grid-template-rows: 360px 250px;
+  }
+
+  .terminal,
+  .particlePanel {
+    height: 100%;
   }
 
   .particlePanel {
-    min-height: 180px;
+    min-height: 250px;
   }
 
   .code {
-    min-height: 220px;
+    height: calc(100% - 3.85rem);
     padding: 1rem;
-    font-size: 0.76rem;
+    font-size: 0.88rem;
+    line-height: 1.7;
   }
 }
 
