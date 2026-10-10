@@ -100,48 +100,29 @@
   transform: translate(-clamp(1rem, 5vw, 5rem), -clamp(1rem, 4vw, 3rem));
 }
 
-.heroBox {
-  position: relative;
+.typewriterContainer {
   display: grid;
   min-height: 18rem;
   place-items: center;
   width: min(25rem, 100%);
 }
 
-.glitchWord {
-  display: grid;
-  grid-template: 1fr / 1fr;
-  align-items: center;
-  justify-items: center;
-  min-width: min(100%, 16rem);
-  min-height: 5rem;
-  margin: 0;
+.typewriterText {
+  width: 0;
+  margin: 0 auto;
+  overflow: hidden;
   color: #fff;
   font-family: var(--font-code), ui-monospace, SFMono-Regular, monospace;
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 800;
   letter-spacing: 0.12em;
   line-height: 1;
-  text-align: center;
-  text-shadow: 0 0 18px rgba(255, 255, 255, 0.24);
-}
-
-.glitchWordItem {
-  grid-area: 1 / 1;
+  border-right: 0.15em solid #fff;
   white-space: nowrap;
-  animation: glitchWordCycle 12s steps(1, end) infinite;
-}
-
-.glitchWordItem:nth-child(2) {
-  animation-delay: -9s;
-}
-
-.glitchWordItem:nth-child(3) {
-  animation-delay: -6s;
-}
-
-.glitchWordItem:nth-child(4) {
-  animation-delay: -3s;
+  text-align: center;
+  animation:
+    typing 2.5s steps(11, end),
+    blinkCaret 0.75s step-end infinite;
 }
 
 .heroDetails {
@@ -329,10 +310,13 @@
     order: 3;
   }
 
-  .glitchWord {
+  .typewriterContainer {
     width: min(22rem, 88vw);
-    min-width: 0;
-    font-size: clamp(1.6rem, 9vw, 2.5rem);
+    min-height: 14rem;
+  }
+
+  .typewriterText {
+    font-size: clamp(1.4rem, 8vw, 2.5rem);
   }
 
   .homePage {
@@ -362,14 +346,15 @@
 @media (prefers-reduced-motion: reduce) {
   .codeLine,
   .cursor,
-  .glitchWordItem,
   .editorialHero::before,
   .editorialHero::after {
     animation: none;
   }
 
-  .glitchWordItem:not(:first-child) {
-    display: none;
+  .typewriterText {
+    width: auto;
+    border-right-color: transparent;
+    animation: none;
   }
 
   .codeViewport {
@@ -377,31 +362,14 @@
     scroll-behavior: auto;
   }
 
-  @keyframes glitchWordCycle {
-    0%, 20% {
-      opacity: 1;
-      clip-path: inset(0);
-      transform: translate(0);
-      text-shadow: none;
-    }
-    21% {
-      opacity: 0;
-      clip-path: inset(0 0 48% 0);
-      transform: translate(-3px, 1px);
-      text-shadow: 2px 0 #ff1744, -2px 0 #00e5ff;
-    }
-    24%, 25% {
-      opacity: 1;
-      clip-path: inset(12% 0 35% 0);
-      transform: translate(4px, -1px);
-      text-shadow: 3px 0 #ff1744, -3px 0 #00e5ff;
-    }
-    27%, 100% {
-      opacity: 0;
-      clip-path: inset(0);
-      transform: translate(0);
-      text-shadow: none;
-    }
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blinkCaret {
+    from, to { border-color: transparent; }
+    50% { border-color: #fff; }
   }
 
   .ambientVideo {
