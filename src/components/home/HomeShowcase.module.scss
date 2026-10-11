@@ -45,7 +45,7 @@
 }
 
 .portfolioTerminalTitle {
-  width: min(100%, 28rem);
+  width: min(100%, clamp(28rem, 50vw, 44rem));
   color: #fff;
   font-family: var(--font-code), ui-monospace, monospace;
   animation: terminalEntrance 900ms cubic-bezier(0.22, 1, 0.36, 1) both;

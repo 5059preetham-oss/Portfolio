@@ -43,6 +43,19 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("theme");
+    if (savedTheme === "light" || savedTheme === "dark") setTheme(savedTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", nextTheme);
+    window.localStorage.setItem("theme", nextTheme);
+    setTheme(nextTheme);
+  };
 
   return (
     <>
@@ -87,7 +100,12 @@ export const Header = () => {
           >
             <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
               {routes["/"] && (
-                <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
+                <ToggleButton
+                  prefixIcon="home"
+                  href="/"
+                  label="Home"
+                  selected={pathname === "/"}
+                />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
@@ -166,6 +184,14 @@ export const Header = () => {
                   </Row>
                 </>
               )}
+              <button
+                className={styles.themeButton}
+                type="button"
+                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+                onClick={toggleTheme}
+              >
+                {theme === "dark" ? "☼ Light" : "☾ Dark"}
+              </button>
             </Row>
           </Row>
         </Row>

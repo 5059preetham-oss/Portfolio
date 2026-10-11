@@ -71,8 +71,8 @@ export default async function RootLayout({
                     root.setAttribute('data-' + key, value);
                   });
                   
-                  // Resolve theme
-                  const resolveTheme = () => 'dark';
+                  // Resolve the saved theme, defaulting to dark.
+                  const resolveTheme = () => localStorage.getItem('theme') || 'dark';
                   
                   // Apply saved theme
                   root.setAttribute('data-theme', resolveTheme());
