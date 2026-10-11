@@ -13,12 +13,13 @@
 }
 
 .blogShowcase h1 {
-  max-width: 14ch;
-  margin: 1rem 0;
+  max-width: none;
+  margin: 1rem auto;
   color: var(--neutral-on-background-strong);
-  font-size: clamp(2.5rem, 8vw, 7rem);
+  font-size: clamp(1.8rem, 4.5vw, 4.25rem);
   letter-spacing: -0.06em;
   line-height: 0.9;
+  text-align: center;
 }
 
 .intro {
