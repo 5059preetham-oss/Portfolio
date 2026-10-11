@@ -22,29 +22,56 @@
 
 .navigation :global(button) {
   min-height: 3rem;
+  color: #fff !important;
+}
+
+.navigation :global(a) {
+  color: #fff !important;
+}
+
+.navigation :global(svg) {
+  color: #fff !important;
+  fill: currentColor;
 }
 
 .navigation > :global(div) {
   min-width: 0;
 }
 
-.themeButton {
+.themePanel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  gap: 0.45rem;
   min-height: 3rem;
-  padding: 0 0.7rem;
-  border: 0;
-  border-radius: 0.4rem;
-  background: transparent;
-  color: inherit;
+  margin-left: 0.5rem;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: #050505;
+  color: #fff;
   cursor: pointer;
   font: inherit;
   white-space: nowrap;
 }
 
-.themeButton:hover,
-.themeButton:focus-visible {
+.themePanel:hover,
+.themePanel:focus-visible {
   background: rgba(255, 255, 255, 0.1);
-  outline: 2px solid currentColor;
+  outline: 2px solid #fff;
   outline-offset: 2px;
+}
+
+.headerClock {
+  min-width: 0;
+}
+
+.clock {
+  color: #fff;
+  font-family: var(--font-code), ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 .headerActions {
@@ -70,7 +97,8 @@
     min-height: 2.7rem;
   }
 
-  .themeButton {
+  .themePanel {
     min-height: 2.7rem;
+    margin-left: 0.25rem;
   }
 }
