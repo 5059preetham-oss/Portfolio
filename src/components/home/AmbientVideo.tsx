@@ -8,8 +8,8 @@ export function AmbientVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const darkVideoPath = `${basePath}/media/portfolio-background.mp4`;
-  const lightVideoPath = `${basePath}/media/gemini_generated_video_b42a61b8.mp4`;
-  const posterPath = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/og/home.jpg`;
+  const lightVideoPath = darkVideoPath;
+  const posterPath = `${basePath}/images/og/home.jpg`;
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [videoPath, setVideoPath] = useState(darkVideoPath);
 

@@ -57,6 +57,14 @@ jobs:
             echo "Homepage export is a Next error document"
             exit 1
           fi
+          grep -Fq 'PORTFOLIO' out/index.html || {
+            echo "Homepage export is missing the PORTFOLIO marker"
+            exit 1
+          }
+          grep -Fq 'Preetham' out/index.html || {
+            echo "Homepage export is missing the Preetham marker"
+            exit 1
+          }
           touch out/.nojekyll
 
       - name: Upload Pages artifact
