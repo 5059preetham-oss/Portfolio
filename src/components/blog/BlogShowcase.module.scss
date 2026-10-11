@@ -1,0 +1,95 @@
+.blogShowcase {
+  width: min(100%, 78rem);
+  padding: clamp(2rem, 6vw, 6rem) clamp(1rem, 4vw, 3rem) 5rem;
+}
+
+.eyebrow,
+.category {
+  margin: 0;
+  color: #67e8f9;
+  font: 0.75rem/1.4 var(--font-code), monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.blogShowcase h1 {
+  max-width: 14ch;
+  margin: 1rem 0;
+  color: var(--neutral-on-background-strong);
+  font-size: clamp(2.5rem, 8vw, 7rem);
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+
+.intro {
+  max-width: 42rem;
+  margin: 0 0 clamp(2rem, 5vw, 4rem);
+  color: var(--neutral-on-background-weak);
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+.card {
+  overflow: hidden;
+  border: 1px solid var(--neutral-border-medium);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--page-background) 88%, white 12%);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.card h2 {
+  margin: 0;
+  color: var(--neutral-on-background-strong);
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  line-height: 1.1;
+}
+
+.excerpt,
+.articleBody {
+  margin: 0;
+  color: var(--neutral-on-background-weak);
+  line-height: 1.6;
+}
+
+.details {
+  width: 100%;
+  margin-top: auto;
+  border-top: 1px solid var(--neutral-border-weak);
+  padding-top: 0.9rem;
+}
+
+.details summary {
+  color: var(--neutral-on-background-strong);
+  cursor: pointer;
+  font-weight: 650;
+}
+
+.articleBody {
+  padding-top: 0.9rem;
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
