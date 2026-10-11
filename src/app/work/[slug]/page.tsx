@@ -31,7 +31,7 @@ export async function generateMetadata({
     title: project.metadata.title,
     description: project.metadata.summary,
     baseURL,
-    image: project.metadata.image || `${baseURL}/images/og/home.jpg`,
+    image: project.metadata.image || `${baseURL}/images/og/portfolio.svg`,
     path: `${work.path}/${project.slug}`,
   });
 }
@@ -54,7 +54,7 @@ export default async function Project({
         path={`${work.path}/${project.slug}`}
         title={project.metadata.title}
         description={project.metadata.summary}
-        image={`${baseURL}/images/og/home.jpg`}
+        image={`${baseURL}/images/og/portfolio.svg`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,

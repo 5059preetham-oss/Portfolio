@@ -7,7 +7,7 @@ export async function generateMetadata() {
     title: work.title,
     description: work.description,
     baseURL: baseURL,
-    image: `${baseURL}/images/og/home.jpg`,
+    image: `${baseURL}/images/og/portfolio.svg`,
     path: work.path,
   });
 }
@@ -21,7 +21,7 @@ export default function Work() {
         path={work.path}
         title={work.title}
         description={work.description}
-        image={`${baseURL}/images/og/home.jpg`}
+        image={`${baseURL}/images/og/portfolio.svg`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
