@@ -9,7 +9,7 @@ export function AmbientVideo() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const darkVideoPath = `${basePath}/media/portfolio-background.mp4`;
   const lightVideoPath = darkVideoPath;
-  const posterPath = `${basePath}/images/og/home.jpg`;
+  const posterPath = `${basePath}/images/og/portfolio.svg`;
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [videoPath, setVideoPath] = useState(darkVideoPath);
 

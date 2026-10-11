@@ -21,7 +21,8 @@ files under `src/app/work/projects`; the files are automatically included in
 the Work page. Add blog posts under `src/app/blog/posts` and enable the Blog
 route in `src/resources/once-ui.config.ts` when you have posts to publish.
 
-Replace `public/images/og/home.jpg` with an image you own when you are ready.
+The default Open Graph artwork in `public/images/og/portfolio.svg` is an original abstract
+portfolio graphic. Replace it with an image you own when you are ready.
 Do not add private keys or credentials to this repository.
 
 ## Deploy to GitHub Pages

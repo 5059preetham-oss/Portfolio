@@ -7,7 +7,7 @@ export async function generateMetadata() {
     title: blog.title,
     description: blog.description,
     baseURL: baseURL,
-    image: `${baseURL}/images/og/home.jpg`,
+    image: `${baseURL}/images/og/portfolio.svg`,
     path: blog.path,
   });
 }
@@ -21,7 +21,7 @@ export default function Blog() {
         title={blog.title}
         description={blog.description}
         path={blog.path}
-        image={`${baseURL}/images/og/home.jpg`}
+        image={`${baseURL}/images/og/portfolio.svg`}
         author={{
           name: person.name,
           url: `${baseURL}/blog`,
