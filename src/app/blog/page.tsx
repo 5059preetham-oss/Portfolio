@@ -1,5 +1,5 @@
-import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
-import { Posts } from "@/components/blog/Posts";
+import { Column, Meta, Schema } from "@once-ui-system/core";
+import { BlogShowcase } from "@/components/blog/BlogShowcase";
 import { baseURL, blog, person } from "@/resources";
 
 export async function generateMetadata() {
@@ -14,7 +14,7 @@ export async function generateMetadata() {
 
 export default function Blog() {
   return (
-    <Column maxWidth="m" paddingTop="24">
+    <Column fillWidth paddingTop="24" horizontal="center">
       <Schema
         as="blogPosting"
         baseURL={baseURL}
@@ -28,17 +28,7 @@ export default function Blog() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Heading marginBottom="l" variant="heading-strong-xl" marginLeft="24">
-        {blog.title}
-      </Heading>
-      <Column fillWidth flex={1} gap="40">
-        <Posts range={[1, 1]} thumbnail />
-        <Posts range={[2, 3]} columns="2" thumbnail direction="column" />
-        <Heading as="h2" variant="heading-strong-xl" marginLeft="l">
-          Earlier posts
-        </Heading>
-        <Posts range={[4]} columns="2" />
-      </Column>
+      <BlogShowcase />
     </Column>
   );
 }
