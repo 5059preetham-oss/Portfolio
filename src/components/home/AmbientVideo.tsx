@@ -1,16 +1,26 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useState } from "react";
 import styles from "./HomeShowcase.module.scss";
 
 export function AmbientVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const videoPath = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/media/portfolio-background.mp4`;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const darkVideoPath = `${basePath}/media/portfolio-background.mp4`;
+  const lightVideoPath = `${basePath}/media/gemini_generated_video_b42a61b8.mp4`;
   const posterPath = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/og/home.jpg`;
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [videoPath, setVideoPath] = useState(darkVideoPath);
 
   useEffect(() => {
     const video = videoRef.current;
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateTheme = () => {
+      const nextTheme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+      setTheme(nextTheme);
+      setVideoPath(nextTheme === "light" ? lightVideoPath : darkVideoPath);
+    };
     const updateMotion = () => {
       if (mediaQuery.matches) {
         video?.pause();
@@ -20,9 +30,24 @@ export function AmbientVideo() {
     };
 
     updateMotion();
+    updateTheme();
     mediaQuery.addEventListener("change", updateMotion);
-    return () => mediaQuery.removeEventListener("change", updateMotion);
-  }, []);
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => {
+      mediaQuery.removeEventListener("change", updateMotion);
+      observer.disconnect();
+    };
+  }, [darkVideoPath, lightVideoPath]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.load();
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      void video.play().catch(() => undefined);
+    }
+  }, [videoPath]);
 
   return (
     <div className={styles.ambientBackground} aria-hidden="true">
@@ -35,6 +60,9 @@ export function AmbientVideo() {
         playsInline
         preload="metadata"
         poster={posterPath}
+        onError={() => {
+          if (theme === "light" && videoPath !== darkVideoPath) setVideoPath(darkVideoPath);
+        }}
       >
         <source src={videoPath} type="video/mp4" />
       </video>

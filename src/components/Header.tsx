@@ -36,7 +36,11 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" })
     return () => clearInterval(intervalId);
   }, [timeZone, locale]);
 
-  return <>{currentTime}</>;
+  return (
+    <time dateTime={currentTime} aria-label={`Current time ${currentTime || "loading"}`}>
+      {currentTime || "--:--:--"}
+    </time>
+  );
 };
 
 export default TimeDisplay;
@@ -84,8 +88,13 @@ export const Header = () => {
           position: "fixed",
         }}
       >
-        <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
+        <Row className={styles.headerClock} paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
           {display.location && <Row s={{ hide: true }}>{person.location}</Row>}
+          {(pathname === "/" || pathname.startsWith("/blog")) && (
+            <Flex className={styles.clock} vertical="center">
+              <TimeDisplay timeZone={person.location} />
+            </Flex>
+          )}
         </Row>
         <Row fillWidth horizontal="center">
           <Row
@@ -184,17 +193,18 @@ export const Header = () => {
                   </Row>
                 </>
               )}
-              <button
-                className={styles.themeButton}
-                type="button"
-                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-                onClick={toggleTheme}
-              >
-                {theme === "dark" ? "☼ Light" : "☾ Dark"}
-              </button>
             </Row>
           </Row>
         </Row>
+        <button
+          className={styles.themePanel}
+          type="button"
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          onClick={toggleTheme}
+        >
+          <span aria-hidden="true">{theme === "dark" ? "☼" : "☾"}</span>
+          <span>{theme === "dark" ? "Light" : "Dark"}</span>
+        </button>
         <Flex fillWidth horizontal="end" vertical="center">
           <Flex
             className={styles.headerActions}
