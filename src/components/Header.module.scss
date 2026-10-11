@@ -24,6 +24,29 @@
   min-height: 3rem;
 }
 
+.navigation > :global(div) {
+  min-width: 0;
+}
+
+.themeButton {
+  min-height: 3rem;
+  padding: 0 0.7rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+}
+
+.themeButton:hover,
+.themeButton:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 .headerActions {
   min-width: 0;
 }
@@ -44,6 +67,10 @@
   }
 
   .navigation :global(button) {
+    min-height: 2.7rem;
+  }
+
+  .themeButton {
     min-height: 2.7rem;
   }
 }
