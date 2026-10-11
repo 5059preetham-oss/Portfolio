@@ -48,10 +48,15 @@ jobs:
             out/work/portfolio-website/index.html; do
             test -f "$route" || { echo "Missing route file: $route"; exit 1; }
           done
+          test -d src/app/blog/posts
           grep -Fq '/Portfolio/_next/' out/index.html || {
             echo "Missing /Portfolio/ asset prefix in homepage export"
             exit 1
           }
+          if grep -Fq '__next_error__' out/index.html || grep -Fq 'name="robots" content="noindex"' out/index.html; then
+            echo "Homepage export is a Next error document"
+            exit 1
+          fi
           touch out/.nojekyll
 
       - name: Upload Pages artifact
