@@ -68,10 +68,14 @@
 }
 
 .clock {
-  color: #fff;
+  color: #000;
   font-family: var(--font-code), ui-monospace, monospace;
   letter-spacing: 0.08em;
   white-space: nowrap;
+}
+
+html[data-theme="dark"] .clock {
+  color: #fff;
 }
 
 .headerActions {
