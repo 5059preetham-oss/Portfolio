@@ -38,15 +38,21 @@ jobs:
 
       - name: Verify GitHub Pages route files
         run: |
-          test -f out/index.html
-          test -f out/404.html
-          test -f out/about/index.html
-          test -f out/blog/index.html
-          test -f out/gallery/index.html
-          test -f out/work/index.html
-          test -f out/work/portfolio-website/index.html
-          grep -q '/Portfolio/blog/' out/index.html
-          grep -q '/Portfolio/_next/' out/index.html
+          for route in \
+            out/index.html \
+            out/404.html \
+            out/about/index.html \
+            out/blog/index.html \
+            out/gallery/index.html \
+            out/work/index.html \
+            out/work/portfolio-website/index.html; do
+            test -f "$route" || { echo "Missing route file: $route"; exit 1; }
+          done
+          grep -Fq '/Portfolio/_next/' out/index.html || {
+            echo "Missing /Portfolio/ asset prefix in homepage export"
+            exit 1
+          }
+          touch out/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
