@@ -36,6 +36,18 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /Portfolio
           NEXT_PUBLIC_SITE_URL: https://5059preetham-oss.github.io/Portfolio
 
+      - name: Verify GitHub Pages route files
+        run: |
+          test -f out/index.html
+          test -f out/404.html
+          test -f out/about/index.html
+          test -f out/blog/index.html
+          test -f out/gallery/index.html
+          test -f out/work/index.html
+          test -f out/work/portfolio-website/index.html
+          grep -q '/Portfolio/blog/' out/index.html
+          grep -q '/Portfolio/_next/' out/index.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -5,15 +5,14 @@ import { useEffect, useState } from "react";
 
 import { Button, Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery, social } from "@/resources";
+import { routes, about, blog, work, gallery, social } from "@/resources";
 import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
-  timeZone: string;
-  locale?: string; // Optionally allow locale, defaulting to 'en-GB'
+  timeZone?: string;
 };
 
-const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" }) => {
+const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone = "Asia/Kolkata" }) => {
   const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {
@@ -26,7 +25,7 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" })
         second: "2-digit",
         hour12: false,
       };
-      const timeString = new Intl.DateTimeFormat(locale, options).format(now);
+      const timeString = new Intl.DateTimeFormat("en-GB", options).format(now);
       setCurrentTime(timeString);
     };
 
@@ -34,7 +33,7 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" })
     const intervalId = setInterval(updateTime, 1000);
 
     return () => clearInterval(intervalId);
-  }, [timeZone, locale]);
+  }, [timeZone]);
 
   return (
     <time dateTime={currentTime} aria-label={`Current time ${currentTime || "loading"}`}>
@@ -89,12 +88,9 @@ export const Header = () => {
         }}
       >
         <Row className={styles.headerClock} paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Row s={{ hide: true }}>{person.location}</Row>}
-          {(pathname === "/" || pathname.startsWith("/blog")) && (
-            <Flex className={styles.clock} vertical="center">
-              <TimeDisplay timeZone={person.location} />
-            </Flex>
-          )}
+          <Flex className={styles.clock} vertical="center">
+            <TimeDisplay />
+          </Flex>
         </Row>
         <Row fillWidth horizontal="center">
           <Row
@@ -230,9 +226,6 @@ export const Header = () => {
                   </Button>
                 ) : null;
               })}
-            </Flex>
-            <Flex s={{ hide: true }}>
-              {display.time && <TimeDisplay timeZone={person.location} />}
             </Flex>
           </Flex>
         </Flex>
