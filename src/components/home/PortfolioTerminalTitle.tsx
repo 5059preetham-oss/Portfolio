@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import styles from "./HomeShowcase.module.scss";
 
-const destination = "PORTFOLIO";
+const destination = "Preetham S";
 
 export function PortfolioTerminalTitle() {
-  const [text, setText] = useState("");
+  const [text, setText] = useState(destination);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -63,8 +63,7 @@ export function PortfolioTerminalTitle() {
       eraseText(cycleToType);
     };
 
-    // Let the terminal chrome establish itself before the first deliberate edit.
-    schedule(cycleToType, 3200);
+    schedule(cycleToErase, 3200);
 
     return () => {
       cancelled = true;
@@ -74,13 +73,26 @@ export function PortfolioTerminalTitle() {
 
   return (
     <section className={styles.portfolioHero} aria-label="Portfolio title">
+      <span className={styles.heroLabel}>Portfolio / 2026</span>
+      <span className={`${styles.heroMarker} ${styles.heroMarkerTop}`} aria-hidden="true" />
+      <span className={`${styles.heroMarker} ${styles.heroMarkerSide}`} aria-hidden="true" />
       <div className={`${styles.portfolioTerminalTitle} ${reducedMotion ? styles.staticTitle : ""}`}>
         <div className={styles.titleBody}>
-          <span className={styles.titlePrompt} aria-hidden="true">&gt;</span>
-          <h1 aria-live="polite">{text}</h1>
+          <div className={styles.titleStack}>
+            <h1 aria-live="polite" data-text={text}>
+              <span className={styles.titleText}>{text}</span>
+            </h1>
+            <p className={styles.titleStudent}>Student</p>
+          </div>
           <span className={styles.titleCursor} aria-hidden="true" />
         </div>
+        <div className={styles.titleFooter}>
+          <span>Game development</span>
+          <span>3D modeling</span>
+          <span>Programming</span>
+        </div>
       </div>
+      <p className={styles.heroContext}>Learning in public<br />from PES University</p>
     </section>
   );
 }
